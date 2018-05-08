@@ -1,6 +1,6 @@
 // get descriptions JSON
 var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "http://pmocarski.com/ChessOpeningRecommender/data/descriptions.json", false);
+xhReq.open("GET", "http://pmocarski.com/ChessOpeningRecommender/data/opening_descriptions.json", false);
 xhReq.send(null);
 var descriptions_map = JSON.parse(xhReq.responseText);
 var descriptions = [];
