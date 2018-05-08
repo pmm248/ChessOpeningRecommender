@@ -8,9 +8,9 @@ with open('eco.json') as file:
 	openings = json.load(file)
 	for opening in openings:
 		opening_name = opening['n']
-		print(opening_name)
 		if ":" in opening_name or "," in opening_name:
 			continue
+		print(opening_name)
 		sys.stdout.flush()
 		try:
 			opening_description = wikipedia.summary(opening_name, sentences=6)
