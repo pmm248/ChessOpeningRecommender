@@ -14,6 +14,10 @@ $(document).ready(function(){
     $("#submitButton").click(function(){
 		var result = descriptions[Math.floor(Math.random()*descriptions.length)];
         $("#results").empty();
-		$("#results").append("<br></br><h5>" + result[0] + "</h5>" + "<p>" + result[1] + "</p>");
+		$("#results").append("<br></br><h5>" + result[0] + "</h5>" + "<p>" + result[1] + "</p>" + "<br></br><br></br>");
+		
+		$('html, body').animate({
+        scrollTop: $("#results").offset().top
+		}, 1000);
     });
 });
