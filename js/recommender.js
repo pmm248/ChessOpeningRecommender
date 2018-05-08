@@ -89,7 +89,7 @@ function getMatches(k=5){
 	for (var i = 0; i < descriptions.length; i++){
 		var title = descriptions[i][0];
 		var description = title.toLowerCase() + " " + descriptions[i][1].toLowerCase();
-		if (description.includes("attack") || description.includes("attacking") || description.includes("aggressive") || description.includes("rapid") || description.includes("fast")){
+		if (description.includes("aggressive") || description.includes("rapid") || description.includes("fast")){
 			if (!(title in scores)){
 				scores[title] = attackVal;
 			}
