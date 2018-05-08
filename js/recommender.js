@@ -13,6 +13,7 @@ for (var key in descriptions_map){
 $(document).ready(function(){
     $("#submitButton").click(function(){
 		var result = descriptions[Math.floor(Math.random()*descriptions.length)];
-        alert(result[0]);
+        $("#results").empty();
+		$("#results").append("<br></br><h5>" + result[0] + "</h5>" + "<p>" + result[1] + "</p>");
     });
 });
