@@ -9,7 +9,7 @@ with open('eco.json') as file:
 	for opening in openings:
 		opening_name = opening['n']
 		print(opening_name)
-		if ":" in opening_name:
+		if ":" in opening_name or "," in opening_name:
 			continue
 		sys.stdout.flush()
 		try:
