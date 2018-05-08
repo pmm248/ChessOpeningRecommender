@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ?????????????????????????????????????????????????? -->
+  <meta charset="utf-8">
+  <title>Chess Opening Recommender</title>
+  <meta name="description" content="TODO: Description Placeholder">
+  <meta name="author" content="Peter">
+
+  <!-- Mobile Specific Metas
+  ?????????????????????????????????????????????????? -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  ?????????????????????????????????????????????????? -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  ?????????????????????????????????????????????????? -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/slider.css">
+
+  <!-- Favicon
+  ?????????????????????????????????????????????????? -->
+  <link rel="icon" type="image/jpg" href="images/Logo.jpg">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  ?????????????????????????????????????????????????? -->
+  <div class="container">
+    <div class="row">
+      <div class="one-half column header">
+        <div align="left">
+          <h1>Chess Opening Recommender</h1>
+		  <br> </br>
+        </div>
+      </div>
+      <div class="one-half column header">
+      <img src="images/Logo.jpg" width="40%"/>
+      </div>
+    </div>
+	
+	<!-- Positional/Aggressive slider -->
+	<div class="row">
+	  <div class="three columns">
+		<p> I am a positional player </p>
+	  </div>
+	  <div class="six columns">
+	    <div class="slidecontainer">
+		  <input type="range" min="-100" max="100" value="0" class="slider" id="positionalAttackingRange">
+	    </div>
+	  </div>
+	  <div class="three columns" align="right">
+	    <p> I am an attacking player </p>
+	  </div>
+	</div>
+	
+	<!-- Closed slider -->
+	<div class="row">
+	  <div class="three columns">
+		<p> I prefer closed games </p>
+	  </div>
+	  <div class="six columns">
+	    <div class="slidecontainer">
+		  <input type="range" min="-100" max="100" value="0" class="slider" id="openClosedGameRange">
+	    </div>
+	  </div>
+	  <div class="three columns" align="right">
+	    <p> I prefer open games </p>
+	  </div>
+	</div>
+	
+	<!-- Gambits slider -->
+	<div class="row">
+	  <div class="three columns">
+		<p> I hate gambits </p>
+	  </div>
+	  <div class="six columns">
+	    <div class="slidecontainer">
+		  <input type="range" min="-100" max="100" value="0" class="slider" id="gambitRange">
+	    </div>
+	  </div>
+	  <div class="three columns" align="right">
+	    <p> I love gambits </p>
+	  </div>
+	</div>
+	
+	<!-- Theory slider -->
+	<div class="row">
+	  <div class="three columns">
+		<p> I hate complex theory </p>
+	  </div>
+	  <div class="six columns">
+	    <div class="slidecontainer">
+		  <input type="range" min="-100" max="100" value="0" class="slider" id="theoryRange">
+	    </div>
+	  </div>
+	  <div class="three columns" align="right">
+	    <p> I love studying theory </p>
+	  </div>
+	</div>
+	
+	<div class="row">
+      <div class="twelve columns social" align="center">
+	    <button class="button green" id="submitButton">Find Chess Openings</button>
+    
+
+  </div>
+
+<!-- End Document
+  ?????????????????????????????????????????????????? -->
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/recommender.js"></script>
+
+</html>
