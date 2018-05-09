@@ -151,7 +151,7 @@ function getMatches(k=5){
 
 $(document).ready(function(){
     $("#submitButton").click(function(){
-		var num_results = 90
+		var num_results = 10
 		var result = getMatches(k=num_results);
         $("#results").empty();
 		for(var i = 0; i < num_results; i++){
