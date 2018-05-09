@@ -3,7 +3,7 @@ import sys
 
 descriptions = {}
 
-taboo_phrases = ["King's Gambit Accepted, Muzio Gambit", "Accepted", "Declined", "Slav Indian", "Queen's Indian Accelerated", "Yusupov-Rubinstein System", "Guatemala Defense", "Rubinstein Opening", "Bronstein Gambit", "Duras Gambit", "Paleface Attack", "Franco-Benoni Defense", "Pterodactyl Defense", "Fried Fox Defense", "Australian Defense", "Robatsch Defense", "Old Benoni Defense", "English Orangutan", "Barnes Defense", "Valencia Opening", "Montevideo Defense", "Czech Defense", "Crab Opening", "Venezolana Opening", "RÃ©ti Opening", "Lemming Defense", "Global Opening", "Lasker Simul Special", "Ware Defense"]
+taboo_phrases = ["King's Gambit Accepted, Muzio Gambit", "Accepted", "Declined", "Slav Indian", "Queen's Indian Accelerated", "Yusupov-Rubinstein System", "Guatemala Defense", "Rubinstein Opening", "Bronstein Gambit", "Duras Gambit", "Paleface Attack", "Franco-Benoni Defense", "Pterodactyl Defense", "Fried Fox Defense", "Australian Defense", "Robatsch Defense", "Old Benoni Defense", "English Orangutan", "Barnes Defense", "Valencia Opening", "Montevideo Defense", "Czech Defense", "Crab Opening", "Venezolana Opening", "RÃ©ti Opening", "Lemming Defense", "Global Opening", "Lasker Simul Special", "Ware Defense", "Vulture Defense"]
 
 with open('opening_descriptions.json', 'r') as file:
 	openings = json.load(file)
