@@ -15,25 +15,36 @@ function getMatches(k=5){
 	scores = {};
 	
 	// Add scores for gambit val
-	var gambit_val = parseInt($('#gambitRange').val());
+	var gambitVal = parseInt($('#gambitRange').val());
 	for (var i = 0; i < descriptions.length; i++){
 		var title = descriptions[i][0];
 		var description = descriptions[i][1].toLowerCase();
+		// Search if description contains gambit and reward/penalize accordingly
 		if (description.includes("gambit")){
 			if (!(title in scores)){
-				scores[title] = gambit_val;
+				scores[title] = gambitVal;
 			}
 			else{
-				scores[title] += gambit_val;
+				scores[title] += gambitVal;
 			}
 		}
 		else{
 			if (!(title in scores)){
-				scores[title] = -1 * gambit_val;
+				scores[title] = -1 * gambitVal;
 			}
 			else{
-				scores[title] -= gambit_val;
+				scores[title] -= gambitVal;
 			}	
+		}
+
+		// Bonus points if title contains gambit and user likes gambits
+		if (title.includes("Gambit") && gambitVal > 0){
+			if (!(title in scores)){
+				scores[title] = gambitVal * .2;
+			}
+			else{
+				scores[title] += gambitVal * .2;
+			}
 		}
 	}
 	
@@ -105,6 +116,16 @@ function getMatches(k=5){
 				scores[title] -= attackVal;
 			}	
 		}
+
+		// Bonus points if user is attacking and title contains attack
+		if (title.includes("Attack") && attackVal > 0){
+			if (!(title in scores)){
+				scores[title] = attackVal * .2;
+			}
+			else{
+				scores[title] += attackVal * .2;
+			}
+		}
 	}
 	
 	// Add a bit of randomness
@@ -130,7 +151,7 @@ function getMatches(k=5){
 
 $(document).ready(function(){
     $("#submitButton").click(function(){
-		var num_results = 10
+		var num_results = 90
 		var result = getMatches(k=num_results);
         $("#results").empty();
 		for(var i = 0; i < num_results; i++){
