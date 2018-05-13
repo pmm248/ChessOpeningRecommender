@@ -149,12 +149,19 @@ function getMatches(k=5){
 			if ($.inArray(keyword, description.split(' ')) > -1){
 				if (!(title in scores)){
 					scores[title] = 100 / keywords.length;
-					console.log(title);
 				}
 				else{
 					scores[title] += 100 / keywords.length;
-					console.log(title);
 				}
+			// Bonus points for being in title
+			if ($.inArray(keyword, title.toLowerCase().split(' ')) > -1){
+				if (!(title in scores)){
+					scores[title] = 100 / keywords.length;
+				}
+				else{
+					scores[title] += 100 / keywords.length;
+				}
+			}
 			}
 		}
 	}
