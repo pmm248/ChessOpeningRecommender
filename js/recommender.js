@@ -1,17 +1,29 @@
-// get descriptions JSON
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "http://pmocarski.com/ChessOpeningRecommender/data/opening_descriptions.json", false);
-xhReq.send(null);
-var descriptions_map = JSON.parse(xhReq.responseText);
-var descriptions = [];
-for (var key in descriptions_map){
-	if (descriptions_map.hasOwnProperty(key)){
-		descriptions.push( [key, descriptions_map[key]]);
+
+/* get descriptions JSON */
+function getDescriptions(){
+	var xhReq = new XMLHttpRequest();
+	xhReq.open("GET", "http://pmocarski.com/ChessOpeningRecommender/data/opening_descriptions.json", false);
+	xhReq.send(null);
+	
+	var descriptions_map = JSON.parse(xhReq.responseText);
+	var descriptions = [];
+	
+	for (var key in descriptions_map){
+		if (descriptions_map.hasOwnProperty(key)){
+			descriptions.push( [key, descriptions_map[key]]);
+		}
 	}
+	
+	return {desc_map: descriptions_map, desc: descriptions};
 }
 
+
+var desc_and_map = getDescriptions();
+var descriptions = desc_and_map['desc'];
+var descriptions_map = desc_and_map['desc_map'];
+
+
 function getMatches(k=5){
-	console.log("HERE");
 	scores = {};
 	
 	// Add scores for gambit val
@@ -85,7 +97,6 @@ function getMatches(k=5){
 	
 	// Add scores for positional/attacking val
 	var attackVal = parseInt($('#positionalAttackingRange').val());
-	console.log(attackVal);
 	for (var i = 0; i < descriptions.length; i++){
 		var title = descriptions[i][0];
 		var description = title.toLowerCase() + " " + descriptions[i][1].toLowerCase();
@@ -107,11 +118,32 @@ function getMatches(k=5){
 		}
 	}
 	
-	// Add a bit of randomness
-	for (var key in scores){
-		scores[key] += Math.random() * 5
+	// Add score for keyword matchings
+	var keywords = $('#keywords').val().toLowerCase().replace(",", "").split(" ");
+	for (var keyword_index in keywords){
+		keyword = keywords[keyword_index]
+		for (var i = 0; i < descriptions.length; i++){
+			var title = descriptions[i][0];
+			var description = title.toLowerCase() + " " + descriptions[i][1].toLowerCase();
+			if ($.inArray(keyword, description.split(' ')) > -1){
+				if (!(title in scores)){
+					scores[title] = 100 / keywords.length;
+					console.log(title);
+				}
+				else{
+					scores[title] += 100 / keywords.length;
+					console.log(title);
+				}
+			}
+		}
 	}
 	
+	// Add a bit of randomness
+	for (var key in scores){
+		scores[key] += Math.random() * 5;
+	}
+	
+	// Sort and return results
 	var results = [];
 	for (var title in scores) {
 		results.push([title, scores[title]]);
@@ -119,18 +151,19 @@ function getMatches(k=5){
 	results.sort(function(a, b) {
 		return b[1] - a[1]; 
 	});
-	console.log(results);
 	
-	top_k_results = []
+	top_k_results = [];
 	for (var i = 0; i < k; i++){
-		top_k_results.push([results[i][0], descriptions_map[results[i][0]]])
+		top_k_results.push([results[i][0], descriptions_map[results[i][0]]]);
 	}
-	return top_k_results
+	
+	return top_k_results;
 }
 
 $(document).ready(function(){
     $("#submitButton").click(function(){
 		var num_results = 10
+		var keywords = $()
 		var result = getMatches(k=num_results);
         $("#results").empty();
 		for(var i = 0; i < num_results; i++){

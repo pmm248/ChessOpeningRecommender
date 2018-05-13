@@ -37,14 +37,20 @@
     <div class="row">
       <div class="one-half column header">
         <div align="left">
-          <h1>Chess Opening Recommender</h1>
-		  <br> </br>
+          <h2>Chess Opening Recommender</h2>
+		  <br/>
         </div>
       </div>
       <div class="one-half column header">
       <img src="images/Logo.jpg" width="40%"/>
       </div>
     </div>
+	
+	<div class="row" align="center">
+		<form>
+			<input type="text" style="width: 40vw;" name="keywords" id="keywords" placeholder="Enter search terms here (i.e. modern)">
+		</form>
+	</div>
 	
 	<!-- Positional/Aggressive slider -->
 	<div class="row">
@@ -119,9 +125,22 @@
   ?????????????????????????????????????????????????? -->
 </body>
 
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/recommender.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('#keywords').keypress(function(e){
+	  console.log('here');
+      if(e.keyCode==13){
+		event.preventDefault();
+		$('#submitButton').click();
+	  }
+    });
+});
+</script>
 
 </html>
